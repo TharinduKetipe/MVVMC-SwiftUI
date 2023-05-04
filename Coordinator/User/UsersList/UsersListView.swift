@@ -8,10 +8,10 @@ import SwiftUI
 import Combine
 
 struct UsersListView: View {
-    @ObservedObject var viewModel: UsersListViewModel
+    @StateObject var viewModel: UsersListViewModel
     
     let didClickUser = PassthroughSubject<User, Never>()
- 
+    
     var body: some View {
         NavigationView {
             List(viewModel.users) { user in
@@ -22,7 +22,9 @@ struct UsersListView: View {
                 }
             }
             .navigationBarTitle("Users")
-            .onAppear()
+            .onAppear {
+                viewModel.fetchUsers()
+            }
         }
     }
 }

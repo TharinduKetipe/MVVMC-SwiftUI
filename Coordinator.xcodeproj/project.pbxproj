@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		810DD5492A014DDD0088F0F8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810DD5482A014DDD0088F0F8 /* User.swift */; };
+		8144B6532A03847B003F2A60 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8144B6522A03847B003F2A60 /* Profile.swift */; };
 		8152F94629F64FF200C21C80 /* UserDetailsViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152F94529F64FF200C21C80 /* UserDetailsViewModels.swift */; };
 		817C6C5029F4F6510042532E /* CoordinatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C6C4F29F4F6510042532E /* CoordinatorApp.swift */; };
 		817C6C5229F4F6510042532E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C6C5129F4F6510042532E /* ContentView.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		810DD5482A014DDD0088F0F8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8144B6522A03847B003F2A60 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8152F94529F64FF200C21C80 /* UserDetailsViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModels.swift; sourceTree = "<group>"; };
 		817C6C4C29F4F6510042532E /* Coordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coordinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		817C6C4F29F4F6510042532E /* CoordinatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorApp.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				817C6C7029F5AA110042532E /* UserDetailsView.swift */,
 				8152F94529F64FF200C21C80 /* UserDetailsViewModels.swift */,
+				8144B6522A03847B003F2A60 /* Profile.swift */,
 			);
 			path = UserDetails;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				817C6C6829F5014F0042532E /* AppCoordinator.swift in Sources */,
 				8152F94629F64FF200C21C80 /* UserDetailsViewModels.swift in Sources */,
 				817C6C7329F5AD930042532E /* UsersListViewModel.swift in Sources */,
+				8144B6532A03847B003F2A60 /* Profile.swift in Sources */,
 				810DD5492A014DDD0088F0F8 /* User.swift in Sources */,
 				817C6C5029F4F6510042532E /* CoordinatorApp.swift in Sources */,
 			);

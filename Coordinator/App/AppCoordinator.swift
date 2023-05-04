@@ -16,32 +16,33 @@ final class AppCoordinator: ObservableObject {
         self.path = path
     }
     
-    func usersFlow() {
-        let usersFlowCoordinator = UserFlowCoordinator(page: .users)
-        self.push(usersFlowCoordinator)
-    }
-    
-    func settingsFlow() {
-        
-    }
-    
-    func profileFlow() {
-        
-    }
-    
-    func push<T: Hashable>(_ coordinator: T) {
-        path.append(coordinator)
-    }
-    
     @ViewBuilder
     func build() -> some View {
         homeView()
     }
     
-    func homeView() -> some View {
+    private func push<T: Hashable>(_ coordinator: T) {
+        path.append(coordinator)
+    }
+    
+    private func homeView() -> some View {
         let homeView = HomeView()
         bind(view: homeView)
         return homeView
+    }
+    
+    private func usersFlow() {
+        let usersFlowCoordinator = UserFlowCoordinator(page: .users)
+        self.bind(coordinator: usersFlowCoordinator)
+        self.push(usersFlowCoordinator)
+    }
+    
+    private func settingsFlow() {
+        
+    }
+    
+    private func profileFlow() {
+        
     }
     
     private func bind(view: HomeView) {
@@ -60,6 +61,15 @@ final class AppCoordinator: ObservableObject {
                 }
             })
             .store(in: &cancellables)
-        }
+    }
+    
+    private func bind(coordinator: UserFlowCoordinator) {
+        coordinator.showUserProfile
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] coordinator in
+                self?.push(coordinator)
+            })
+            .store(in: &cancellables)
+    }
 }
 

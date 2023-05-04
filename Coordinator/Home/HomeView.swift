@@ -8,9 +8,7 @@ import SwiftUI
 import Combine
 
 struct HomeView: View {
-    
     let didClickMenuItem = PassthroughSubject<String, Never>()
-    
     @State var menuItems = ["Users", "Settings", "Profile"]
     
     var body: some View {

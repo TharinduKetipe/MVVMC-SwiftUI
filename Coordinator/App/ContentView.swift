@@ -4,11 +4,9 @@
 //
 //  Created by Tharindu Ketipearachchi on 2023-04-23.
 //
-
 import SwiftUI
 
 struct ContentView: View {
-
     @StateObject private var appCoordinator = AppCoordinator(path: NavigationPath())
     
     var body: some View {
@@ -20,9 +18,7 @@ struct ContentView: View {
         }
         .environmentObject(appCoordinator)
         .id(UUID())
-
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -4,11 +4,9 @@
 //
 //  Created by Tharindu Ketipearachchi on 2023-04-23.
 //
-
 import Combine
 
-class UsersListViewModel: ObservableObject {
-    
+final class UsersListViewModel: ObservableObject {
     @Published var users: [User] = []
     
     func fetchUsers() {
