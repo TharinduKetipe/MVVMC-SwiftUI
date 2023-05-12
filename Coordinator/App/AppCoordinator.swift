@@ -33,16 +33,20 @@ final class AppCoordinator: ObservableObject {
     
     private func usersFlow() {
         let usersFlowCoordinator = UserFlowCoordinator(page: .users)
-        self.bind(coordinator: usersFlowCoordinator)
+        self.bind(userCoordinator: usersFlowCoordinator)
         self.push(usersFlowCoordinator)
     }
     
     private func settingsFlow() {
-        
+        let settingsFlowCoordinator = SettingsFlowCoordinator(page: .main)
+        self.bind(settingsCoordinator: settingsFlowCoordinator)
+        self.push(settingsFlowCoordinator)
     }
     
     private func profileFlow() {
-        
+        let profileFlowCoordinator = ProfileFlowCoordinator(page: .main)
+        self.bind(profileCoordinator: profileFlowCoordinator)
+        self.push(profileFlowCoordinator)
     }
     
     private func bind(view: HomeView) {
@@ -63,8 +67,26 @@ final class AppCoordinator: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func bind(coordinator: UserFlowCoordinator) {
-        coordinator.showUserProfile
+    private func bind(userCoordinator: UserFlowCoordinator) {
+        userCoordinator.pushCoordinator
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] coordinator in
+                self?.push(coordinator)
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func bind(settingsCoordinator: SettingsFlowCoordinator) {
+        settingsCoordinator.pushCoordinator
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] coordinator in
+                self?.push(coordinator)
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func bind(profileCoordinator: ProfileFlowCoordinator) {
+        profileCoordinator.pushCoordinator
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] coordinator in
                 self?.push(coordinator)

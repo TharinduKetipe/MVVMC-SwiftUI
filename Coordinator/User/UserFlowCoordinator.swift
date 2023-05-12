@@ -7,7 +7,7 @@
 import SwiftUI
 import Combine
 
-enum Page: String, Identifiable {
+enum UserPage: String, Identifiable {
     case users, profile
     
     var id: String {
@@ -18,12 +18,12 @@ enum Page: String, Identifiable {
 final class UserFlowCoordinator: ObservableObject, Hashable {
     private var id: UUID
     private var userID: Int
-    @Published var page: Page
+    @Published var page: UserPage
     
     private var cancellables = Set<AnyCancellable>()
-    let showUserProfile = PassthroughSubject<UserFlowCoordinator, Never>()
+    let pushCoordinator = PassthroughSubject<UserFlowCoordinator, Never>()
     
-    init(page: Page, userID: Int = 0) {
+    init(page: UserPage, userID: Int = 0) {
         id = UUID()
         self.page = page
         self.userID = userID
@@ -72,6 +72,6 @@ final class UserFlowCoordinator: ObservableObject, Hashable {
 
 extension UserFlowCoordinator {
     private func showUserProfile(for user: User) {
-        showUserProfile.send(UserFlowCoordinator(page: .profile, userID: user.id))
+        pushCoordinator.send(UserFlowCoordinator(page: .profile, userID: user.id))
     }
 }

@@ -20,6 +20,14 @@
 		817C6C7129F5AA110042532E /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C6C7029F5AA110042532E /* UserDetailsView.swift */; };
 		817C6C7329F5AD930042532E /* UsersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C6C7229F5AD930042532E /* UsersListViewModel.swift */; };
 		817EAF8E2A00EE4B006A1365 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817EAF8D2A00EE4B006A1365 /* HomeView.swift */; };
+		81E070672A0E32EB00B4F84D /* MainSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E070662A0E32EB00B4F84D /* MainSettingsView.swift */; };
+		81E070692A0E354E00B4F84D /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E070682A0E354D00B4F84D /* SettingsFlowCoordinator.swift */; };
+		81E0706B2A0E382500B4F84D /* CustomSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E0706A2A0E382500B4F84D /* CustomSettingsView.swift */; };
+		81E0706D2A0E38FC00B4F84D /* PrivacySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E0706C2A0E38FC00B4F84D /* PrivacySettingsView.swift */; };
+		81E070722A0E400D00B4F84D /* MainProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E070712A0E400C00B4F84D /* MainProfileView.swift */; };
+		81E070742A0E402000B4F84D /* PersonalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E070732A0E402000B4F84D /* PersonalDetailsView.swift */; };
+		81E070762A0E409D00B4F84D /* EducationalDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E070752A0E409D00B4F84D /* EducationalDetailsView.swift */; };
+		81E070782A0E412900B4F84D /* ProfileFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E070772A0E412900B4F84D /* ProfileFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +45,14 @@
 		817C6C7029F5AA110042532E /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		817C6C7229F5AD930042532E /* UsersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListViewModel.swift; sourceTree = "<group>"; };
 		817EAF8D2A00EE4B006A1365 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		81E070662A0E32EB00B4F84D /* MainSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingsView.swift; sourceTree = "<group>"; };
+		81E070682A0E354D00B4F84D /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
+		81E0706A2A0E382500B4F84D /* CustomSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSettingsView.swift; sourceTree = "<group>"; };
+		81E0706C2A0E38FC00B4F84D /* PrivacySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySettingsView.swift; sourceTree = "<group>"; };
+		81E070712A0E400C00B4F84D /* MainProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileView.swift; sourceTree = "<group>"; };
+		81E070732A0E402000B4F84D /* PersonalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsView.swift; sourceTree = "<group>"; };
+		81E070752A0E409D00B4F84D /* EducationalDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationalDetailsView.swift; sourceTree = "<group>"; };
+		81E070772A0E412900B4F84D /* ProfileFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +163,10 @@
 		817EAF8F2A00EFC6006A1365 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				81E070682A0E354D00B4F84D /* SettingsFlowCoordinator.swift */,
+				81E070632A0E0FC000B4F84D /* MainSettings */,
+				81E070652A0E0FE800B4F84D /* Custom */,
+				81E070642A0E0FD600B4F84D /* Privacy */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -154,8 +174,60 @@
 		817EAF902A00EFCF006A1365 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				81E070772A0E412900B4F84D /* ProfileFlowCoordinator.swift */,
+				81E070702A0E3DB800B4F84D /* MainProfile */,
+				81E0706E2A0E3DA900B4F84D /* Personal */,
+				81E0706F2A0E3DB200B4F84D /* Education */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		81E070632A0E0FC000B4F84D /* MainSettings */ = {
+			isa = PBXGroup;
+			children = (
+				81E070662A0E32EB00B4F84D /* MainSettingsView.swift */,
+			);
+			path = MainSettings;
+			sourceTree = "<group>";
+		};
+		81E070642A0E0FD600B4F84D /* Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				81E0706C2A0E38FC00B4F84D /* PrivacySettingsView.swift */,
+			);
+			path = Privacy;
+			sourceTree = "<group>";
+		};
+		81E070652A0E0FE800B4F84D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				81E0706A2A0E382500B4F84D /* CustomSettingsView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		81E0706E2A0E3DA900B4F84D /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				81E070732A0E402000B4F84D /* PersonalDetailsView.swift */,
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		81E0706F2A0E3DB200B4F84D /* Education */ = {
+			isa = PBXGroup;
+			children = (
+				81E070752A0E409D00B4F84D /* EducationalDetailsView.swift */,
+			);
+			path = Education;
+			sourceTree = "<group>";
+		};
+		81E070702A0E3DB800B4F84D /* MainProfile */ = {
+			isa = PBXGroup;
+			children = (
+				81E070712A0E400C00B4F84D /* MainProfileView.swift */,
+			);
+			path = MainProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,14 +301,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				817C6C7129F5AA110042532E /* UserDetailsView.swift in Sources */,
+				81E070722A0E400D00B4F84D /* MainProfileView.swift in Sources */,
 				817C6C6A29F50F190042532E /* UserFlowCoordinator.swift in Sources */,
+				81E0706B2A0E382500B4F84D /* CustomSettingsView.swift in Sources */,
 				817C6C5229F4F6510042532E /* ContentView.swift in Sources */,
+				81E070762A0E409D00B4F84D /* EducationalDetailsView.swift in Sources */,
 				817EAF8E2A00EE4B006A1365 /* HomeView.swift in Sources */,
 				817C6C6629F4FE670042532E /* UsersListView.swift in Sources */,
 				817C6C6829F5014F0042532E /* AppCoordinator.swift in Sources */,
 				8152F94629F64FF200C21C80 /* UserDetailsViewModels.swift in Sources */,
+				81E0706D2A0E38FC00B4F84D /* PrivacySettingsView.swift in Sources */,
+				81E070782A0E412900B4F84D /* ProfileFlowCoordinator.swift in Sources */,
 				817C6C7329F5AD930042532E /* UsersListViewModel.swift in Sources */,
+				81E070692A0E354E00B4F84D /* SettingsFlowCoordinator.swift in Sources */,
 				8144B6532A03847B003F2A60 /* Profile.swift in Sources */,
+				81E070742A0E402000B4F84D /* PersonalDetailsView.swift in Sources */,
+				81E070672A0E32EB00B4F84D /* MainSettingsView.swift in Sources */,
 				810DD5492A014DDD0088F0F8 /* User.swift in Sources */,
 				817C6C5029F4F6510042532E /* CoordinatorApp.swift in Sources */,
 			);

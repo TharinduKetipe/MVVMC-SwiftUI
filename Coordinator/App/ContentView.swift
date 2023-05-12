@@ -15,6 +15,12 @@ struct ContentView: View {
                 .navigationDestination(for: UserFlowCoordinator.self) { coordinator in
                     coordinator.build()
                 }
+                .navigationDestination(for: SettingsFlowCoordinator.self) { coordinator in
+                    coordinator.build()
+                }
+                .navigationDestination(for: ProfileFlowCoordinator.self) { coordinator in
+                    coordinator.build()
+                }
         }
         .environmentObject(appCoordinator)
         .id(UUID())
