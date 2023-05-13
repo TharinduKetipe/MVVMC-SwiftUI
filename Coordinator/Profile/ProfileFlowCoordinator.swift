@@ -7,6 +7,7 @@
 import SwiftUI
 import Combine
 
+// Enum to identify Profile flow screen Types
 enum ProfilePage: String, Identifiable {
     case main, personal, education
     
@@ -16,23 +17,16 @@ enum ProfilePage: String, Identifiable {
 }
 
 final class ProfileFlowCoordinator: ObservableObject, Hashable {
-    private var id: UUID
     @Published var page: ProfilePage
     
+    private var id: UUID
     private var cancellables = Set<AnyCancellable>()
+    
     let pushCoordinator = PassthroughSubject<ProfileFlowCoordinator, Never>()
     
     init(page: ProfilePage) {
         id = UUID()
         self.page = page
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: ProfileFlowCoordinator, rhs: ProfileFlowCoordinator) -> Bool {
-        return lhs.id == rhs.id
     }
     
     @ViewBuilder
@@ -47,6 +41,16 @@ final class ProfileFlowCoordinator: ObservableObject, Hashable {
         }
     }
     
+    // MARK: Required methods for class to conform to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: ProfileFlowCoordinator, rhs: ProfileFlowCoordinator) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    // MARK: View Creation Methods
     private func mainProfileView() -> some View {
         let mainView = MainProfileView()
         bind(view: mainView)
@@ -61,6 +65,7 @@ final class ProfileFlowCoordinator: ObservableObject, Hashable {
         return EducationalDetailsView()
     }
     
+    // MARK: View Bindings
     private func bind(view: MainProfileView) {
         view.didClickPersonal
             .receive(on: DispatchQueue.main)
@@ -82,6 +87,7 @@ final class ProfileFlowCoordinator: ObservableObject, Hashable {
     }
 }
 
+// MARK: Navigation Related Extensions
 extension ProfileFlowCoordinator {
     private func showPersonalDetails() {
         pushCoordinator.send(ProfileFlowCoordinator(page: .personal))

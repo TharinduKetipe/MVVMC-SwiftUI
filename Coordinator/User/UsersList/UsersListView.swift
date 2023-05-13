@@ -9,7 +9,6 @@ import Combine
 
 struct UsersListView: View {
     @StateObject var viewModel: UsersListViewModel
-    
     let didClickUser = PassthroughSubject<User, Never>()
     
     var body: some View {

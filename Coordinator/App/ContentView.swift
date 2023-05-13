@@ -23,7 +23,6 @@ struct ContentView: View {
                 }
         }
         .environmentObject(appCoordinator)
-        .id(UUID())
     }
 }
 

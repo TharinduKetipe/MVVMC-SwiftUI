@@ -7,9 +7,8 @@
 import Combine
 
 final class UserDetailsViewModel: ObservableObject {
-    private var userID: Int
-    
     @Published var profile:Profile?
+    private var userID: Int
     
     init(userID: Int) {
         self.userID = userID

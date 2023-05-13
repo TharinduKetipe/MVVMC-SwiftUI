@@ -4,7 +4,6 @@
 //
 //  Created by Tharindu Ketipearachchi on 2023-05-12.
 //
-
 import SwiftUI
 
 struct EducationalDetailsView: View {

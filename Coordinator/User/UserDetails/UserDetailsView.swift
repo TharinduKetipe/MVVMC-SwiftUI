@@ -12,22 +12,22 @@ struct UserDetailsView: View {
     var body: some View {
         VStack {
             Text(viewModel.profile?.name ?? "N/A")
-                       .font(.title)
+                .font(.title)
             if let age = viewModel.profile?.age {
                 Text("Age: \(String(age))")
             } else {
                 Text("Age: Unknown")
             }
             Text("Occupation: \(viewModel.profile?.occupation ?? "N/A")")
-                   Spacer()
-               }
-               .padding()
-               .navigationBarTitle("USER DETAILS")
-               .onAppear {
-                   viewModel.fetchProfile()
-               }
+            Spacer()
+        }
+        .padding()
+        .navigationBarTitle("USER DETAILS")
+        .onAppear {
+            viewModel.fetchProfile()
+        }
     }
-
+    
 }
 
 struct UserDetailsView_Previews: PreviewProvider {

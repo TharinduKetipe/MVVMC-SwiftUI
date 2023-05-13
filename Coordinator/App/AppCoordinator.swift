@@ -9,7 +9,6 @@ import Combine
 
 final class AppCoordinator: ObservableObject {
     @Published var path: NavigationPath
-    
     private var cancellables = Set<AnyCancellable>()
     
     init(path: NavigationPath) {
@@ -31,6 +30,7 @@ final class AppCoordinator: ObservableObject {
         return homeView
     }
     
+    // MARK: Flow Control Methods
     private func usersFlow() {
         let usersFlowCoordinator = UserFlowCoordinator(page: .users)
         self.bind(userCoordinator: usersFlowCoordinator)
@@ -49,6 +49,7 @@ final class AppCoordinator: ObservableObject {
         self.push(profileFlowCoordinator)
     }
     
+    // MARK: HomeView Bindings
     private func bind(view: HomeView) {
         view.didClickMenuItem
             .receive(on: DispatchQueue.main)
@@ -67,6 +68,7 @@ final class AppCoordinator: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // MARK: Flow Coordinator Bindings
     private func bind(userCoordinator: UserFlowCoordinator) {
         userCoordinator.pushCoordinator
             .receive(on: DispatchQueue.main)

@@ -7,6 +7,7 @@
 import SwiftUI
 import Combine
 
+// Enum to identify Settings flow screen Types
 enum SettingsPage: String, Identifiable {
     case main, privacy, custom
     
@@ -16,23 +17,16 @@ enum SettingsPage: String, Identifiable {
 }
 
 final class SettingsFlowCoordinator: ObservableObject, Hashable {
-    private var id: UUID
     @Published var page: SettingsPage
     
+    private var id: UUID
     private var cancellables = Set<AnyCancellable>()
+    
     let pushCoordinator = PassthroughSubject<SettingsFlowCoordinator, Never>()
     
     init(page: SettingsPage) {
         id = UUID()
         self.page = page
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: SettingsFlowCoordinator, rhs: SettingsFlowCoordinator) -> Bool {
-        return lhs.id == rhs.id
     }
     
     @ViewBuilder
@@ -47,6 +41,16 @@ final class SettingsFlowCoordinator: ObservableObject, Hashable {
         }
     }
     
+    // MARK: Required methods for class to conform to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: SettingsFlowCoordinator, rhs: SettingsFlowCoordinator) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    // MARK: View Creation Methods
     private func mainSettingsView() -> some View {
         let mainView = MainSettingsView()
         bind(view: mainView)
@@ -61,6 +65,7 @@ final class SettingsFlowCoordinator: ObservableObject, Hashable {
         return CustomSettingsView()
     }
     
+    // MARK: View Bindings
     private func bind(view: MainSettingsView) {
         view.didClickPrivacy
             .receive(on: DispatchQueue.main)
@@ -82,6 +87,7 @@ final class SettingsFlowCoordinator: ObservableObject, Hashable {
     }
 }
 
+// MARK: Navigation Related Extensions
 extension SettingsFlowCoordinator {
     private func showPrivacySettings() {
         pushCoordinator.send(SettingsFlowCoordinator(page: .privacy))

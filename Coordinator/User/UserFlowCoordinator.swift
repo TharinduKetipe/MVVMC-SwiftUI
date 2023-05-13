@@ -7,6 +7,7 @@
 import SwiftUI
 import Combine
 
+// Enum to identify User flow screen Types
 enum UserPage: String, Identifiable {
     case users, profile
     
@@ -16,25 +17,18 @@ enum UserPage: String, Identifiable {
 }
 
 final class UserFlowCoordinator: ObservableObject, Hashable {
-    private var id: UUID
-    private var userID: Int
     @Published var page: UserPage
     
+    private var id: UUID
+    private var userID: Int
     private var cancellables = Set<AnyCancellable>()
+    
     let pushCoordinator = PassthroughSubject<UserFlowCoordinator, Never>()
     
     init(page: UserPage, userID: Int = 0) {
         id = UUID()
         self.page = page
         self.userID = userID
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: UserFlowCoordinator, rhs: UserFlowCoordinator) -> Bool {
-        return lhs.id == rhs.id
     }
     
     @ViewBuilder
@@ -47,6 +41,16 @@ final class UserFlowCoordinator: ObservableObject, Hashable {
         }
     }
     
+    // MARK: Required methods for class to conform to Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: UserFlowCoordinator, rhs: UserFlowCoordinator) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    // MARK: View Creation Methods
     private func usersListView() -> some View {
         let viewModel = UsersListViewModel()
         let usersListView = UsersListView(viewModel: viewModel)
@@ -60,6 +64,7 @@ final class UserFlowCoordinator: ObservableObject, Hashable {
         return userDetailsView
     }
     
+    // MARK: View Bindings
     private func bind(view: UsersListView) {
         view.didClickUser
             .receive(on: DispatchQueue.main)
@@ -70,6 +75,7 @@ final class UserFlowCoordinator: ObservableObject, Hashable {
     }
 }
 
+// MARK: Navigation Related Extensions
 extension UserFlowCoordinator {
     private func showUserProfile(for user: User) {
         pushCoordinator.send(UserFlowCoordinator(page: .profile, userID: user.id))
