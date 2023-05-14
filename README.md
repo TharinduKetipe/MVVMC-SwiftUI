@@ -7,7 +7,7 @@ But after SwiftUI has introduced updates to [NavigationStack using new Navigatio
 ## Full Medium Article
 There is a medium article which has explained steip by step implementation of this project.
 <br />
-[Click here to read the full article]()
+[Click here to read the full article](https://medium.com/@katramesh91/how-to-build-uikit-like-mvvm-c-coordinator-hierarchy-with-swiftui-d758b035f91a)
 
 ## App Overview
 <img src = "images/hierarchy.png" width ="500" />  
