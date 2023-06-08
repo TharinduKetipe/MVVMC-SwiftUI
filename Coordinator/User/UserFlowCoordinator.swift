@@ -20,15 +20,21 @@ final class UserFlowCoordinator: ObservableObject, Hashable {
     @Published var page: UserPage
     
     private var id: UUID
-    private var userID: Int
+    private var userID: Int?
     private var cancellables = Set<AnyCancellable>()
     
     let pushCoordinator = PassthroughSubject<UserFlowCoordinator, Never>()
     
-    init(page: UserPage, userID: Int = 0) {
+    init(page: UserPage, userID: Int? = nil) {
         id = UUID()
         self.page = page
-        self.userID = userID
+        
+        if page == .profile {
+            guard let userID = userID else {
+                fatalError("userID must be provided for profile type")
+            }
+            self.userID = userID
+        }
     }
     
     @ViewBuilder
@@ -59,7 +65,7 @@ final class UserFlowCoordinator: ObservableObject, Hashable {
     }
     
     private func userDetailsView() -> some View {
-        let viewModel = UserDetailsViewModel(userID: userID)
+        let viewModel = UserDetailsViewModel(userID: userID ?? 0)
         let userDetailsView = UserDetailsView(viewModel: viewModel)
         return userDetailsView
     }
